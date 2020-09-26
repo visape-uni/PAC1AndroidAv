@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PAC1AndroidAv</string>
+    <string name="fragment_text_1">Details about Item: </string>
+    <string name="fragment_text_2">More details information here.</string>
+</resources>
