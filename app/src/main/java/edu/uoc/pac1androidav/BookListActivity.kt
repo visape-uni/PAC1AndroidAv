@@ -17,7 +17,7 @@ class BookListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_book_detail)
+        setContentView(R.layout.activity_book_list)
 
         omplirLlista()
 
@@ -25,10 +25,9 @@ class BookListActivity : AppCompatActivity() {
             val element = parent.getItemAtPosition(position)
 
             if (frameLayoutList != null) {
-                supportFragmentManager.beginTransaction().replace(frameLayoutList.id, BookDetailFragment())
+                supportFragmentManager.beginTransaction().replace(frameLayoutList.id, BookDetailFragment()).commit()
             } else {
-                supportFragmentManager.beginTransaction().replace(frameLayoutDetail.id, BookDetailFragment())
-                val intent = Intent(this, BookListActivity::class.java)
+                val intent = Intent(this, BookDetailActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -36,7 +35,7 @@ class BookListActivity : AppCompatActivity() {
 
     fun omplirLlista() {
         val listItems = arrayOfNulls<String>(LIST_SIZE)
-        for (i in 1..LIST_SIZE) {
+        for (i in 0..LIST_SIZE-1) {
             listItems[i] = "item $i"
         }
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
