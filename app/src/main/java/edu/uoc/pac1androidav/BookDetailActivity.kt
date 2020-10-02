@@ -10,6 +10,7 @@ class BookDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_detail)
 
-        supportFragmentManager.beginTransaction().replace(frameLayoutDetail.id, BookDetailFragment()).commit()
+
+        supportFragmentManager.beginTransaction().replace(frameLayoutDetail.id, BookDetailFragment.newInstance(intent.getStringExtra("element"))).commit()
     }
 }

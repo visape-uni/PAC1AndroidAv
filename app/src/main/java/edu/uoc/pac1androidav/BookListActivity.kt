@@ -22,13 +22,16 @@ class BookListActivity : AppCompatActivity() {
         omplirLlista()
 
         listView.setOnItemClickListener { parent, view, position, id ->
-            val element = parent.getItemAtPosition(position)
+            val element = position
 
             if (frameLayoutList != null) {
-                supportFragmentManager.beginTransaction().replace(frameLayoutList.id, BookDetailFragment()).commit()
+                supportFragmentManager.beginTransaction().replace(frameLayoutList.id, BookDetailFragment.newInstance(
+                    element.toString()
+                )).commit()
             } else {
-                val intent = Intent(this, BookDetailActivity::class.java)
-                startActivity(intent)
+                val newIntent = Intent(this, BookDetailActivity::class.java)
+                newIntent.putExtra("element", element.toString())
+                startActivity(newIntent)
             }
         }
     }
