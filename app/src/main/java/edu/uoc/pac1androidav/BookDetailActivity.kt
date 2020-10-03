@@ -10,7 +10,12 @@ class BookDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_detail)
 
+        val item = intent.getStringExtra("element")
+        app_bar.title = "Item " + item
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.title = ""
 
-        supportFragmentManager.beginTransaction().replace(frameLayoutDetail.id, BookDetailFragment.newInstance(intent.getStringExtra("element"))).commit()
+        supportFragmentManager.beginTransaction().replace(frameLayoutDetail.id, BookDetailFragment.newInstance(item)).commit()
     }
 }
